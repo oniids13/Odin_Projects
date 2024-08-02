@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: azure;
+}
+
+.choice-box{
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    width: 100vh;
+    background-color: #CADABF;
+    border: 3px black solid;
+}
+
+.btn{
+    width: 100px;
+    height: 50px;
+    font-size: 30px;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+}
+
+.container{
+    display: flex;
+}

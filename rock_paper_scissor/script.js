@@ -1,42 +1,40 @@
 function getComputerChoice(){
     let computer_choice = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-    console.log(`Computer Choice: ${computer_choice}`);
-    return computer_choice;
+    switch (computer_choice){
+        case 1:
+            return "rock";
+            break;
+        case 2:
+            return "paper";
+            break;
+        case 3:
+            return "scissors";
+            break;
+    }
 }
 
-function getHumanChoice(){
-    let human_choice = prompt("Pick your turn 1 - Rock, 2 - Paper, 3- Scissor. Number only");
-    while (human_choice > 3 || human_choice < 1){
-        human_choice = prompt("Pick your turn 1 - Rock, 2 - Paper, 3- Scissor. Number only");
-    } 
-    console.log(`Player Choice: ${human_choice}`);
-    return +human_choice;
-}
-
-let humanScore = 0;
-let computerScore = 0;
 
 
 function playRound(humanChoice, computerChoice){
     if (humanChoice === computerChoice ){
         console.log("Draw! Try Again.");
     }
-    else if (humanChoice === 3 && computerChoice === 2){
+    else if (humanChoice === "scissors" && computerChoice === "paper"){
         humanScore +=1;
-        console.log("Player Wins! Scissor beats Paper");
+        console.log("Player Wins! Scissors beats Paper");
     }
-    else if (humanChoice === 2 && computerChoice === 1){
+    else if (humanChoice === "paper" && computerChoice === "rock"){
         humanScore +=1;
         console.log("Player Wins! Paper beats Rock");
     }
-    else if (humanChoice === 1 && computerChoice === 3){
+    else if (humanChoice === "rock" && computerChoice === "scissors"){
         humanScore +=1;
         console.log("Player Wins! Rock beats Scissors");
     } else{
         computerScore +=1;
-        if (computerChoice === 1 && humanChoice === 3){
+        if (computerChoice === "rock" && humanChoice === "scissors"){
             console.log("Computer Wins! Rock beats Scissors");
-        } else if (computerChoice === 2 && humanChoice === 1){
+        } else if (computerChoice === "paper" && humanChoice === "rock"){
             console.log("Computer wins! Paper beats Rock.");
         } else {
             console.log("Computer wins! Scissors beats Paper");
@@ -47,28 +45,60 @@ function playRound(humanChoice, computerChoice){
     console.log(`Computer Score: ${computerScore}`)
 }
 
-function playGame(){
-    const humanSelection = getHumanChoice();
+function playGame(human_choice){
+    switch(human_choice){
+        case 0:
+            human_choice = "rock";
+            break;
+        case 1:
+            human_choice = "paper";
+            break;
+        case 2:
+            human_choice = "scissors";
+            break;
+    }
+
+    const humanSelection = human_choice;
     const computerSelection = getComputerChoice();
+    container.appendChild(div);
+    div.textContent = `Player Choice: ${humanSelection} Computer Choice: ${computerSelection}`
     playRound(humanSelection, computerSelection);
 }
 
+
+
+let humanScore = 0;
+let computerScore = 0;
 let game_on = true;
 
-while (game_on){
-    playGame();
-    if (humanScore === 5){
-        game_on = false;
-        console.log(`Player wins! Score: ${humanScore}`);
-    }
-    else if (computerScore === 5){
-        game_on = false;
-        console.log(`Computer wins! Score: ${computerScore}`);
-    }
+// while (game_on){
+//     playGame(humanChoice);
+//     if (humanScore === 5){
+//         game_on = false;
+//         console.log(`Player wins! Score: ${humanScore}`);
+//     }
+//     else if (computerScore === 5){
+//         game_on = false;
+//         console.log(`Computer wins! Score: ${computerScore}`);
+//     }
+// }
+
+const buttons = document.querySelectorAll("button");
+let human_choice;
+
+const container = document.querySelector('.container')
+const div = document.createElement('div');
+const body = document.body;
+
+
+
+for (let i = 0; i<buttons.length; i++){
+    buttons[i].addEventListener('click', () =>{
+        if (buttons[i].click){
+            playGame(i);
+            
+        }
+    })
 }
-
-
-
-
    
 
