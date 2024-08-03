@@ -2,103 +2,143 @@ function getComputerChoice(){
     let computer_choice = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
     switch (computer_choice){
         case 1:
-            return "rock";
+            return "✊";
             break;
         case 2:
-            return "paper";
+            return "✋";
             break;
         case 3:
-            return "scissors";
+            return "✌️";
             break;
     }
 }
 
 
 
-function playRound(humanChoice, computerChoice){
-    if (humanChoice === computerChoice ){
-        console.log("Draw! Try Again.");
+function playRound(playerChoice, computerChoice){
+    if (playerChoice === computerChoice ){
+        result.style.color = "blue";
+        result.textContent = "Draw! Try Again.";
     }
-    else if (humanChoice === "scissors" && computerChoice === "paper"){
-        humanScore +=1;
-        console.log("Player Wins! Scissors beats Paper");
+    else if (playerChoice === "✌️" && computerChoice === "✋"){
+        playerScore +=1;
+        result.style.color = "green"
+        result.textContent = "Player Wins! Scissors beats Paper";
     }
-    else if (humanChoice === "paper" && computerChoice === "rock"){
-        humanScore +=1;
-        console.log("Player Wins! Paper beats Rock");
+    else if (playerChoice === "✋" && computerChoice === "✊"){
+        playerScore +=1;
+        result.style.color = "green"
+        result.textContent = "Player Wins! Paper beats Rock";
     }
-    else if (humanChoice === "rock" && computerChoice === "scissors"){
-        humanScore +=1;
-        console.log("Player Wins! Rock beats Scissors");
+    else if (playerChoice === "✊" && computerChoice === "✌️"){
+        playerScore +=1;
+        result.style.color = "green"
+        result.textContent = "Player Wins! Rock beats Scissors";
     } else{
         computerScore +=1;
-        if (computerChoice === "rock" && humanChoice === "scissors"){
-            console.log("Computer Wins! Rock beats Scissors");
-        } else if (computerChoice === "paper" && humanChoice === "rock"){
-            console.log("Computer wins! Paper beats Rock.");
+        if (computerChoice === "✊" && playerChoice === "✌️"){
+            result.style.color = "red"
+            result.textContent = "Computer Wins! Rock beats Scissors";
+        } else if (computerChoice === "✋" && playerChoice === "✊"){
+            result.style.color = "red"
+            result.textContent = "Computer wins! Paper beats Rock.";
         } else {
-            console.log("Computer wins! Scissors beats Paper");
+            result.style.color = "red"
+            result.textContent = "Computer wins! Scissors beats Paper";
         }
         
     }
-    console.log(`Player Score: ${humanScore}`)
-    console.log(`Computer Score: ${computerScore}`)
+    container.append(score)
+    score.textContent = `Player Score: ${playerScore} --- Computer Score: ${computerScore} `
 }
 
-function playGame(human_choice){
-    switch(human_choice){
+function playGame(player_choice){
+    switch(player_choice){
         case 0:
-            human_choice = "rock";
+            player_choice = "✊";
             break;
         case 1:
-            human_choice = "paper";
+            player_choice = "✋";
             break;
         case 2:
-            human_choice = "scissors";
+            player_choice = "✌️";
             break;
     }
 
-    const humanSelection = human_choice;
+    const playerSelection = player_choice;
     const computerSelection = getComputerChoice();
-    container.appendChild(div);
-    div.textContent = `Player Choice: ${humanSelection} Computer Choice: ${computerSelection}`
-    playRound(humanSelection, computerSelection);
+
+
+    body.appendChild(div);
+    div.appendChild(player);
+    div.appendChild(computer);
+    div.appendChild(result);
+    player.textContent = `Player Choice: ${playerSelection.toUpperCase()}`;
+    computer.textContent = `Computer Choice: ${computerSelection.toUpperCase()}`;
+    
+
+    playRound(playerSelection, computerSelection);
+}
+
+function resetGame() {
+    player.textContent = "";
+    computer.textContent = "";
+    result.textContent = "";
+    playerScore = 0;
+    computerScore = 0;
+    isGameOngoing = true;
+    score.textContent = `Player Score: ${playerScore} --- Computer Score: ${computerScore} `
+    resetButton.style.display ="none";
 }
 
 
-
-let humanScore = 0;
+let playerScore = 0;
 let computerScore = 0;
 let game_on = true;
 
-// while (game_on){
-//     playGame(humanChoice);
-//     if (humanScore === 5){
-//         game_on = false;
-//         console.log(`Player wins! Score: ${humanScore}`);
-//     }
-//     else if (computerScore === 5){
-//         game_on = false;
-//         console.log(`Computer wins! Score: ${computerScore}`);
-//     }
-// }
 
 const buttons = document.querySelectorAll("button");
-let human_choice;
+let player_choice;
 
 const container = document.querySelector('.container')
 const div = document.createElement('div');
+div.classList = "board";
 const body = document.body;
+const player = document.createElement("h2");
+const computer = document.createElement("h2");
+const result = document.createElement("h2");
+const score = document.createElement("div");
+score.classList = "score"
+const resetButton = document.createElement("button");
+resetButton.className = "reset";
+resetButton.textContent = "Play Again";
 
 
+let isGameOngoing = true;
 
 for (let i = 0; i<buttons.length; i++){
     buttons[i].addEventListener('click', () =>{
-        if (buttons[i].click){
-            playGame(i);
-            
-        }
+        if (isGameOngoing){
+            if (buttons[i].click){
+                player.textContent = "";
+                computer.textContent = "";
+                result.textContent = ""
+                playGame(i);
+                if (playerScore === 5) {
+                    alert("Player Wins!");
+                    isGameOngoing = false;
+                    div.appendChild(resetButton);
+                    resetButton.style.display = "block";
+                    resetButton.addEventListener("click", resetGame);
+                } else if (computerScore === 5){
+                    alert("Computer Wins!");
+                    isGameOngoing = false;
+                    div.appendChild(resetButton);
+                    resetButton.style.display = "block";
+                    resetButton.addEventListener("click", resetGame);
+                }
+            }
+    }
     })
 }
-   
 
