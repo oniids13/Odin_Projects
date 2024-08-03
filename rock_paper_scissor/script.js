@@ -80,19 +80,9 @@ function playGame(player_choice){
     playRound(playerSelection, computerSelection);
 }
 
-function resetGame() {
-    player.textContent = "";
-    computer.textContent = "";
-    result.textContent = "";
-    playerScore = 0;
-    computerScore = 0;
-    isGameOngoing = true;
-    score.textContent = `Player Score: ${playerScore} --- Computer Score: ${computerScore} `
-    resetButton.style.display ="none";
-}
 
 
-let playerScore = 0;
+let humanScore = 0;
 let computerScore = 0;
 let game_on = true;
 
@@ -118,27 +108,11 @@ let isGameOngoing = true;
 
 for (let i = 0; i<buttons.length; i++){
     buttons[i].addEventListener('click', () =>{
-        if (isGameOngoing){
-            if (buttons[i].click){
-                player.textContent = "";
-                computer.textContent = "";
-                result.textContent = ""
-                playGame(i);
-                if (playerScore === 5) {
-                    alert("Player Wins!");
-                    isGameOngoing = false;
-                    div.appendChild(resetButton);
-                    resetButton.style.display = "block";
-                    resetButton.addEventListener("click", resetGame);
-                } else if (computerScore === 5){
-                    alert("Computer Wins!");
-                    isGameOngoing = false;
-                    div.appendChild(resetButton);
-                    resetButton.style.display = "block";
-                    resetButton.addEventListener("click", resetGame);
-                }
-            }
-    }
+        if (buttons[i].click){
+            playGame(i);
+            
+        }
     })
 }
+   
 
