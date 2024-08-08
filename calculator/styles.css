@@ -90,23 +90,19 @@ button {
     background-color: #0C0C0C;
 }
 
-.screen {
-    height: 50px;
-    border: 2px solid black;
-    text-align: right;
-    background-color: #31363F;
-}
-
 .num {
     background-color: #2F3645;
 }
 
-.op {
+.op,
+.equals {
     background-color: #FF8225;
 }
 
-.digit {
+#result {
     color: antiquewhite;
-    font-size: 40px;
+    font-size: 20px;
     padding: 10px;
+    background-color: #31363F;
+    text-align: right;
 }

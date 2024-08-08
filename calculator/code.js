@@ -1,6 +1,9 @@
 const year = document.getElementById('year');
-const numbers = document.querySelector('.digit');
-const buttons = document.getElementsByTagName("button");
+const numButtons = document.querySelectorAll(".num");
+const clearButton = document.querySelector(".clear");
+const operatorButtons = document.querySelectorAll(".op")
+const numValue = document.getElementById("result");
+const equalButton = document.querySelector(".equals");
 
 
 year.innerHTML = new Date().getFullYear();
@@ -16,13 +19,46 @@ function operate(op, a, b){
 }
 
 function populateScreen(output) {
-    numbers.textContent = output;
+    numValue.value += output;
 }
 
-populateScreen(operate("/", 2, 2));
 
-function calculate() {
-    for (button of buttons){
-        
+function numberClick(){
+    numButtons.forEach((numButton) => {
+        numButton.addEventListener("click", () => {
+            populateScreen(numButton.textContent)
+        });
+    });
+}
+
+
+function clear(){
+    numValue.value = "";
+}
+
+
+let firstNum;
+let operator;
+
+numberClick();
+
+operatorButtons.forEach((opButton) => {
+    opButton.addEventListener("click", () => {
+        firstNum = +numValue.value ;
+        operator = opButton.textContent;
+        clear();
+    })
+})
+
+equalButton.addEventListener("click", () => {
+    let secondNum = +numValue.value;
+    let result = operate(operator, firstNum, secondNum);
+    if (result % 1 !== 0) {
+        numValue.value = result.toFixed(2);
+    } else{
+        numValue.value = result;
     }
-}
+    numBtn = false;
+})
+
+clearButton.addEventListener("click", clear);
