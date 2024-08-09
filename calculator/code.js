@@ -5,6 +5,7 @@ const operatorButtons = document.querySelectorAll(".op")
 const numValue = document.getElementById("result");
 const equalButton = document.querySelector(".equals");
 const deleteButton = document.querySelector(".delete");
+const decimalButton = document.getElementById("decimal");
 
 
 year.innerHTML = new Date().getFullYear();
@@ -28,6 +29,9 @@ function numberClick(){
     numButtons.forEach((numButton) => {
         numButton.addEventListener("click", () => {
             populateScreen(numButton.textContent)
+            if (numValue.value.includes(".")) {
+                decimalButton.disabled = true;
+            }
         });
     });
 }
@@ -35,6 +39,7 @@ function numberClick(){
 
 function clear(){
     numValue.value = "";
+    decimalButton.disabled = false;
 }
 
 function handleOperatorClick(event) {
@@ -72,3 +77,4 @@ equalButton.addEventListener("click", () => {
 })
 
 clearButton.addEventListener("click", clear);
+
