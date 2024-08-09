@@ -4,6 +4,7 @@ const clearButton = document.querySelector(".clear");
 const operatorButtons = document.querySelectorAll(".op")
 const numValue = document.getElementById("result");
 const equalButton = document.querySelector(".equals");
+const deleteButton = document.querySelector(".delete");
 
 
 year.innerHTML = new Date().getFullYear();
@@ -36,29 +37,38 @@ function clear(){
     numValue.value = "";
 }
 
+function handleOperatorClick(event) {
+    firstNum = +numValue.value;
+    operator = event.target.textContent;
+    clear();
+}
+
+function checkForNum(){
+    if (firstNum && secondNum){
+        result = operate(operator, firstNum, secondNum);
+        numValue.value = result;
+        firstNum = result;
+    }
+}
 
 let firstNum;
 let operator;
+let secondNum;
+let result;
 
 numberClick();
-
 operatorButtons.forEach((opButton) => {
-    opButton.addEventListener("click", () => {
-        firstNum = +numValue.value ;
-        operator = opButton.textContent;
-        clear();
-    })
-})
+    opButton.addEventListener("click", handleOperatorClick);
+});
 
 equalButton.addEventListener("click", () => {
-    let secondNum = +numValue.value;
-    let result = operate(operator, firstNum, secondNum);
+    secondNum = +numValue.value;
+    result = operate(operator, firstNum, secondNum);
     if (result % 1 !== 0) {
         numValue.value = result.toFixed(2);
     } else{
         numValue.value = result;
     }
-    numBtn = false;
 })
 
 clearButton.addEventListener("click", clear);
