@@ -6,6 +6,8 @@ const numValue = document.getElementById("result");
 const equalButton = document.querySelector(".equals");
 const deleteButton = document.querySelector(".delete");
 const decimalButton = document.getElementById("decimal");
+const negativeButton = document.querySelector(".negative");
+const percentButton = document.querySelector(".percent");
 
 
 year.innerHTML = new Date().getFullYear();
@@ -48,20 +50,13 @@ function handleOperatorClick(event) {
     clear();
 }
 
-function checkForNum(){
-    if (firstNum && secondNum){
-        result = operate(operator, firstNum, secondNum);
-        numValue.value = result;
-        firstNum = result;
-    }
-}
-
 let firstNum;
 let operator;
 let secondNum;
 let result;
 
 numberClick();
+
 operatorButtons.forEach((opButton) => {
     opButton.addEventListener("click", handleOperatorClick);
 });
@@ -74,7 +69,50 @@ equalButton.addEventListener("click", () => {
     } else{
         numValue.value = result;
     }
+
+    if (result == Infinity){
+        alert("Error don't divide by 0")
+        numValue.value = "";
+    }
 })
 
 clearButton.addEventListener("click", clear);
 
+deleteButton.addEventListener("click", () => {
+    let del = numValue.value.slice(0,-1);
+    numValue.value = del;
+})
+
+negativeButton.addEventListener("click", () =>{
+    let negative = numValue.value * -1;
+    numValue.value = negative;
+} )
+
+
+percentButton.addEventListener("click", () => {
+    let percentage = numValue.value * 0.010;
+    numValue.value = percentage;
+})
+
+document.addEventListener("keypress", (e) => {
+    if (e.key in numbers){
+        numValue.value += e.key;
+        firstNum = +numValue.value;
+        console.log(firstNum);
+    }
+    if (e.key === "+" || e.key === "-" || e.key === "/" || e.key === "*"){
+        firstNum = +numValue.value;
+        operator = e.key;
+        console.log(operator);
+        clear();
+        secondNum = +numValue.value;  
+    }
+    if (e.key === "Enter"){
+        numValue.value = operate(operator, firstNum, secondNum);
+    }
+    
+})
+
+
+
+let numbers = [1,2,3,4,5,6,7,8,9,0];
