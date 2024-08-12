@@ -107,10 +107,13 @@ document.addEventListener("keypress", (e) => {
         clear();
         secondNum = +numValue.value;  
     }
-    if (e.key === "Enter"){
-        numValue.value = operate(operator, firstNum, secondNum);
+
+    if (e.key === "." && !numValue.value.includes(".")){
+        numValue.value += ".";
+        e.preventDefault();
+        return;
+
     }
-    
 })
 
 
