@@ -57,11 +57,13 @@
             <div class="third-row">
               <div>
                 <label for="password">PASSWORD</label>
-                <input type="password" name="password" id="password" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" />
+                <input required type="password" name="password" id="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,12}$" />
+                <span>6-12 length, 1 (uppercase, digit, special character)</span>
               </div>
               <div>
                 <label for="cpass">CONFIRM PASSWORD</label>
-                <input type="password" name="cpass" id="cpass" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" />
+                <input required type="password" name="cpass" id="cpass" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,12}$" />
+                <span>Must match the password</span>
               </div>
             </div>
         </div>

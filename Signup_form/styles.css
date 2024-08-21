@@ -26,7 +26,7 @@ body {
     position: absolute;
     display: flex;
     left: 0;
-    top: 300px;
+    top: 200px;
     color: white;
     font-family: "Jersey 10", sans-serif;
     font-size: 100px;
@@ -50,8 +50,8 @@ body {
 }
 
 .upper {
-    padding: 200px 0px 0px 50px;
-    height: 50vh;
+    padding: 120px 0px 0px 50px;
+    height: 40vh;
     background-color: #F1F1F1;
     
 }
@@ -67,7 +67,7 @@ body {
 }
 
 .middle {
-    padding: 20px 0px 5px 50px;
+    padding: 20px 0px 40px 50px;
 }
 
 .middle p {
@@ -90,7 +90,6 @@ body {
     border: 0px;
     border-radius: 10px;
     padding: 10px;
-    height: 45px;
     width: 200px;
 }
 
@@ -152,3 +151,20 @@ input:focus{
     box-shadow: 2px 2px 5px 1px rgb(205, 205, 214);
 }
 
+input[type="password"] + span {
+    display: none;
+}
+
+input[type="password"]:invalid + span {
+    display: block;
+    color: red;
+    font-family: var(--fontName);
+    font-size: 12px;
+    width: clamp(30ch, 50%, 70ch);
+    padding-top: 10px;
+}
+
+
+input[type="password"]:valid {
+    border: 1px solid green;
+}
