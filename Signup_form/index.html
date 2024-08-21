@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign up!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="img-container">
+        <img class="bg-img" src="bg.jpg" alt="" />
+        <div class="logo-container">
+          <img class="logo" src="logo.png" alt="" />
+          <p>Chillax</p>
+        </div>
+      </div>
+
+      <div class="form-container">
+        <div class="upper">
+          <p>
+            This is not a real online service! You know you need something like
+            this in your life to help you realize your deepest dreams.
+          </p>
+          <p>Sign up <em>now</em> to get started.</p>
+          <p>You <em>know</em> you want to.</p>
+        </div>
+        <div class="middle">
+          <p>Let's do this!</p>
+          <form action="">
+            <div class="first-row">
+              <div>
+                <label for="fname">FIRST NAME</label>
+                <input type="text" name="fname" id="fname" required />
+              </div>
+              <div>
+                <label for="lname">LAST NAME</label>
+                <input type="text" name="lname" id="lname" />
+              </div>
+            </div>
+            <div class="second-row">
+              <div>
+                <label for="email">EMAIL</label>
+                <input type="email" name="email" id="email" required />
+              </div>
+              <div>
+                <label for="number">PHONE NUMBER</label>
+                <input type="text" name="number" id="number" />
+              </div>
+            </div>
+            <div class="third-row">
+              <div>
+                <label for="password">PASSWORD</label>
+                <input type="password" name="password" id="password" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" />
+              </div>
+              <div>
+                <label for="cpass">CONFIRM PASSWORD</label>
+                <input type="password" name="cpass" id="cpass" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" />
+              </div>
+            </div>
+        </div>
+        <div class="lower">
+          <button type="submit">Create Account</button>
+        </form>
+          <p>Already have an account? <a href="">Log in</a></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

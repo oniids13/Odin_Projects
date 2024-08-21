@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --fontName : serif;
+}
+
+body {
+    overflow: hidden;
+}
+
+.img-container {
+    position: absolute;
+
+}
+.bg-img {
+    width: 76.6vh;
+    height: 120vh;
+}
+
+
+.logo-container {
+    position: absolute;
+    display: flex;
+    left: 0;
+    top: 300px;
+    color: white;
+    font-family: "Jersey 10", sans-serif;
+    font-size: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 6.98em;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 100px;
+}
+
+
+.form-container {
+    position: absolute;
+    right: 0;
+    width: 134vh;
+    height: 100vh;
+}
+
+.upper {
+    padding: 200px 0px 0px 50px;
+    height: 50vh;
+    background-color: #F1F1F1;
+    
+}
+
+.upper p {
+    font-family: var(--fontName);
+    font-size: 30px;
+    width: clamp(45ch, 50%, 75ch);
+}
+
+.upper p:last-of-type{
+    padding-top: 20px;
+}
+
+.middle {
+    padding: 20px 0px 5px 50px;
+}
+
+.middle p {
+    font-family: var(--fontName);
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.lower {
+    height: 40vh;
+    background-color: #F1F1F1;
+    padding: 20px 0px 5px 50px;
+}
+
+.lower button{
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    background: #596D48;
+    border: 0px;
+    border-radius: 10px;
+    padding: 10px;
+    height: 45px;
+    width: 200px;
+}
+
+.lower p {
+    padding-top: 30px;
+    font-size: 20px;
+    font-family: var(--fontName);
+}
+
+.lower a {
+    text-decoration: none;
+}
+
+.lower a:visited{
+    color: #596D48;;
+}
+
+.first-row {
+    display: flex;
+    gap: 40px;
+    padding: 20px 0px 20px;
+}
+
+.second-row {
+    display: flex;
+    gap: 40px;
+    padding: 20px 0px 20px;
+}
+
+.third-row {
+    display: flex;
+    gap: 40px;
+    padding: 20px 0px 20px;
+}
+
+label {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    display: block;
+}
+
+input {
+    width: 20em;
+    height: 2em;
+    border: 1px #E5E7EB solid;
+    border-radius: 5px;
+    transition: 0.5s;
+    padding: 5px;
+}
+
+input[type="password"]:invalid {
+    border: 1px red solid;
+}
+
+input:focus{
+    outline: none;
+    border: 1px solid blue;
+    box-shadow: 2px 2px 5px 1px rgb(205, 205, 214);
+}
+
+input[type="password"]::after{
+    content: "* Passwords do not match";
+}
+
+.invalid-entry {
+    display: none;
+    color: red;
+  }
+  
+  input:invalid + .invalid-entry {
+    display: block;
+  }
