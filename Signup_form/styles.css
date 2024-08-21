@@ -18,7 +18,7 @@ body {
 }
 .bg-img {
     width: 76.6vh;
-    height: 120vh;
+    height: 100vh;
 }
 
 
@@ -152,15 +152,3 @@ input:focus{
     box-shadow: 2px 2px 5px 1px rgb(205, 205, 214);
 }
 
-input[type="password"]::after{
-    content: "* Passwords do not match";
-}
-
-.invalid-entry {
-    display: none;
-    color: red;
-  }
-  
-  input:invalid + .invalid-entry {
-    display: block;
-  }
