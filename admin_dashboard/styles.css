@@ -15,10 +15,12 @@ body {
 
 button {
     background-color: var(--mainColor);
-    width: 80px;
-    height: 30px;
+    width: 100px;
+    height: 40px;
     border-radius: 20px;
     color: white;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 a {
@@ -31,11 +33,11 @@ a:visited{
 }
 
 input {
-    width: 600px;
+    width: 900px;
     height: 30px;
     background-color: lightgrey;
     border-radius: 20px;
-    border: 1px var(--mainColor) solid;
+    border: 1px lightgray solid;
     padding: 5px;
 
 }
@@ -44,6 +46,11 @@ input:focus{
     outline: none;
     border: 1px solid blue;
     box-shadow: 2px 2px 5px 1px rgb(205, 205, 214);
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .container {
@@ -60,6 +67,7 @@ input:focus{
     grid-template-rows: 100px 1fr 1fr;
     background-color: var(--mainColor);
     color: white;
+    font-weight: 600;
     gap: 5px;
     padding: 20px;
 }
@@ -112,7 +120,6 @@ input:focus{
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr 1fr;
     background-color: rgb(250, 253, 255);
-    border-bottom: 1px solid wheat;
     box-shadow: 2px 2px whitesmoke;
 }
 
@@ -128,8 +135,8 @@ input:focus{
     gap: 30px;
     justify-content: end;
     align-items: center;
-    padding-right: 50px;
-    padding-top: 35px;
+    padding-right: 80px;
+    padding-top: 50px;
 }
 
 .searchbar{
@@ -147,8 +154,16 @@ input:focus{
     display: flex;
     gap: 15px;
     align-items: center;
-    padding-left: 30px;
+    padding-left: 50px;
     padding-bottom: 15px;
+}
+
+.admin:last-child p{
+    font-size: 70px;
+}
+
+.name {
+    font-size: 25px;
 }
 
 
@@ -175,7 +190,7 @@ input:focus{
     grid-template-columns: 3fr 1fr;
     grid-template-rows: 1fr 1fr;
     padding: 20px;
-    gap: 20px;
+    background-color: #E8E9EB;
 }
 
 .projects {
@@ -186,32 +201,112 @@ input:focus{
 
 .project-head {
     grid-row: 1;
+    display: flex;
+    align-items: end;
+    padding-bottom: 10px;
 }
 .project-cards {
     grid-row: 2;
     display: grid;
-    gap: 20px;
     grid-template-columns: repeat(2, minmax(150px, 1fr));
 }
 
 .cards {
+    display: flex;
+    flex-direction: column;
     height: 200px;
-    width: 350px;
+    width: 500px;
     border: 1px lightgray solid;
-    padding: 20px;
+    padding: 30px 30px;
     border-left: 5px orange solid;
     border-radius: 10px;
-    box-shadow: 1px 1px lightgray;
+    box-shadow: 3px 3px lightgray;
+    background-color: white;
+}
+
+.title {
+    font-weight: 700;
+}
+
+.cards .title + p {
+    color: gray;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.card-icons{
+    display: flex;
+    justify-content: end;
+    padding-top: 25px;
+    gap: 10px;
+}
+
+.announcements {
+    padding-right: 20px;
 }
 
 .announcement-content {
-    border: 1px black solid;
+    border: 1px lightgray solid;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 3px 3px rgb(205, 205, 214);
 }
+
+.announcement-head {
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.announcement-title {
+    font-weight: 600;
+}
+
+.announcement-content .announcement-title + p {
+    font-size: 14px;
+    color: gray;
+}
+
 
 .trending {
     grid-column: 2;
+    padding-right: 20px;
+    padding-top: 30px;
+}
+
+.trending-title {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .trending-content {
-    border: 1px black solid;
+    height: 265px;
+    border: 1px lightgray solid;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    box-shadow: 3px 3px rgb(205, 205, 214);
+}
+
+.trending-profile{
+    display: flex;
+    padding-top: 15px;
+    gap: 15px;
+}
+
+.trending-profile img {
+    width: 40px;
+    border-radius: 50%;
+}
+
+img ~ div p:first-of-type {
+    font-size: 14px;
+}
+
+img ~ div p:last-of-type {
+    color: gray;
 }
