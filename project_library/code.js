@@ -6,9 +6,14 @@ const closeButton = document.querySelector('.cancel-btn');
 const confirmButton = document.querySelector('.confirm-btn');
 const bookContainer = document.querySelector('.books');
 const form = document.getElementById('form');
+const footerYear = document.querySelector('.foot');
 
 addBookToLibrary('Harry Potter and the Deathly Hollows', 'J.K. Rowling', 957, 'Finished');
 addBookToLibrary('Atomic Habits', 'James Clear', 256, 'On-going');
+addBookToLibrary('Rich Dad Poor Dad', 'Robert Kiyosaki', 250, 'Finished');
+addBookToLibrary('Percy Jackson and the Lightning Thief', 'Rick Riordan', 377, 'On-going');
+addBookToLibrary('Inferno', 'Dan Brown', 357, 'Finished');
+
 
 function Book (title, author, pages, status) {
     this.title = title;
@@ -68,10 +73,20 @@ function displayBook() {
             toggleBtn.addEventListener('click', () => {
                 if (statusP.textContent === "Status: Finished") {
                     statusP.textContent = "Status: On-going";
+                    item.status = "On-going";
+                    bookDiv.style.borderTop = "10px solid green";
                 } else if (statusP.textContent === "Status: On-going") {
+                    item.status = "Finished";
                     statusP.textContent = "Status: Finished";
+                    bookDiv.style.borderTop = "10px solid red";
                 }
             })
+
+            if (item.status === "Finished") {
+                bookDiv.style.borderTop = "10px solid red";
+            } else if (item.status === "On-going") {
+                bookDiv.style.borderTop = "10px solid green";
+            }
            
     }
     })
@@ -101,3 +116,4 @@ confirmButton.addEventListener("click", (e) => {
     
 })
 
+footerYear.textContent = new Date().getFullYear();

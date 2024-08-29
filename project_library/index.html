@@ -4,12 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="container">
-      <h1>My Library</h1>
-      <button id="add-book">Add Book</button>
+        <h1>My Library</h1>
+        <button id="add-book">New Book</button>
+      <div class="legend">
+        <p>Legend</p>
+        <p>On-going: <span class="line" style="color: green">----</spa></p>
+        <p>Finished: <span class="line" style="color: red">----</span></p>
+      </div>
       <dialog id="dialog-form">
         <h2>Add New Book</h2>
         <hr />
@@ -47,6 +58,7 @@
       </dialog>
       <div class="books"></div>
     </div>
+    <footer>&copy;<span class="foot"></span> by Jose Dino Abaya</footer>
   </body>
   <script src="code.js"></script>
 </html>
