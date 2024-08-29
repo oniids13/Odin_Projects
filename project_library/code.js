@@ -8,7 +8,7 @@ const bookContainer = document.querySelector('.books');
 const form = document.getElementById('form');
 
 addBookToLibrary('Harry Potter and the Deathly Hollows', 'J.K. Rowling', 957, 'Finished');
-addBookToLibrary('Atomic Habits', 'James Clear', 256, 'Finished');
+addBookToLibrary('Atomic Habits', 'James Clear', 256, 'On-going');
 
 function Book (title, author, pages, status) {
     this.title = title;
@@ -32,28 +32,31 @@ function displayBook() {
         if (item.div === null) {
             const bookDiv = document.createElement('div');
             const delbtn = document.createElement('button');
-            const checkbox = document.createElement('input');
-            checkbox.type = "checkbox";
+            const toggleBtn = document.createElement('button');
             delbtn.textContent = 'Delete';
             bookDiv.className = 'card';
+            toggleBtn.textContent = "Change Status";
             
             let titleP = document.createElement('p');
             let authorP = document.createElement('p');
             let pagesP = document.createElement('p');
             let statusP = document.createElement('p');
+            let bookP = document.createElement('p');
 
-            titleP.textContent = item.title;
-            authorP.textContent = item.author;
-            pagesP.textContent = item.pages;
-            statusP.textContent = item.status;
+            bookP.textContent = `Book number: ${index + 1}`;
+            titleP.textContent = `Title: ${item.title}`;
+            authorP.textContent = `Author: ${item.author}`;
+            pagesP.textContent = `No. of pages: ${item.pages}`;
+            statusP.textContent = `Status: ${item.status}`;
 
-
+            bookDiv.appendChild(bookP);
             bookDiv.appendChild(titleP);
             bookDiv.appendChild(authorP);
             bookDiv.appendChild(pagesP);
             bookDiv.appendChild(statusP);
+            bookDiv.appendChild(toggleBtn);
             bookDiv.appendChild(delbtn);
-            statusP.appendChild(checkbox);
+            
             item.div = bookDiv;
             bookContainer.appendChild(item.div);
             
@@ -62,6 +65,14 @@ function displayBook() {
                 bookContainer.removeChild(bookDiv);
             })
 
+            toggleBtn.addEventListener('click', () => {
+                if (statusP.textContent === "Status: Finished") {
+                    statusP.textContent = "Status: On-going";
+                } else if (statusP.textContent === "Status: On-going") {
+                    statusP.textContent = "Status: Finished";
+                }
+            })
+           
     }
     })
 }
@@ -77,14 +88,16 @@ closeButton.addEventListener('click', () => {
 })
 
 confirmButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    let title = document.getElementById('title').value;
-    let author = document.getElementById('author').value;
-    let pages = document.getElementById('pages').value;
-    let status = document.getElementById('status').value;
-    addBookToLibrary(title, author, pages, status);
-    dialogForm.close();
-    form.reset();
+    if (document.getElementById('title').value && document.getElementById('author').value && document.getElementById('pages').value){
+        e.preventDefault();
+        let title = document.getElementById('title').value;
+        let author = document.getElementById('author').value;
+        let pages = document.getElementById('pages').value;
+        let status = document.getElementById('status').value;
+        addBookToLibrary(title, author, pages, status);
+        dialogForm.close();
+        form.reset();
+}
     
 })
 

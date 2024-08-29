@@ -4,23 +4,132 @@
     box-sizing: border-box;
 }
 
+body {
+    background-image: url(./images/rain_glass.jpg);
+}
+
+.container h1 {
+    background-color: rgb(240, 255, 238, .5);
+    text-align: center;
+    font-size: 40px;
+    padding: 20px 20px;
+}
+
+#add-book {
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    margin: 20px;
+    background-color: #FFF8E8;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+}
+
+#add-book:hover {
+    background-color: aquamarine;
+}
+
+.books {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+
 .card {
-    border: 1px black solid;
+    border: 1px gray solid;
+    box-shadow: 2px 2px snow;
+    border-radius: 20px;
+    background-color: rgb(240, 255, 238, .6);
     font-size: 20px;
     padding: 20px;
     margin: 20px;
     width: 350px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
+.card p {
+    color: #0F0F0F;
+    font-weight: 600;
+}
+
+.card button {
+    width: 120px;
+    height: 30px;
+    border-radius: 20px;
+    border: none;
+    margin: 5px 5px;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    align-self: flex-end;
+}
+
+.card button:first-of-type{
+    background-color: green;
+}
+
+.card button:last-of-type {
+    background-color: red;
+}
 
 dialog {
     position: fixed;
-    top: 20%;
-    left: 40%;
-    width: 300px;
+    top: 30%;
+    left: 50%;
+    width: 400px;
     margin-left: -100px;
-    height: 200px;
+    height: 300px;
     margin-top: -25px;
-    background: yellow;
+    background: rgb(240, 255, 238, .3);
     padding: 20px;
+    color: #0F0F0F;
+    font-weight: 600;
+    overflow: hidden;
+}
+
+label {
+    font-size: 20px;
+}
+
+input{
+    width: 195px;
+    height: 20px;
+    padding: 5px;
+}
+
+#pages {
+    width: 60px;
+}
+
+dialog label + input {
+    margin: 10px;
+}
+
+.dialog-btn {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+dialog button {
+    width: 120px;
+    height: 30px;
+    border-radius: 20px;
+    border: none;
+    margin: 5px 5px;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    align-self: center;
+}
+
+dialog button:first-of-type{
+    background-color: green;
+}
+
+dialog button:last-child{
+    background-color: red;
 }
